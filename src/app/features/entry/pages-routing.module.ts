@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import {  RouterModule, Routes } from '@angular/router';
 import { FinishScreenComponent } from '../finish-screen/finish-screen.component';
-import { GameScreenComponent } from '../game-screen/game-screen.component';
-import { TitleScreenComponent } from '../title-screen/title-screen.component';
+import { GameScreenComponent } from '../game-screen/page/game-screen.component';
+import { TitleScreenComponent } from '../title-screen/page/title-screen.component';
 
 const routes: Routes = [
   {

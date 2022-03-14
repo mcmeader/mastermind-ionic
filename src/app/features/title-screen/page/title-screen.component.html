@@ -1,1 +1,27 @@
-Title Screen
+<ion-card class="container">
+  <ion-card-header>
+    <ion-card-title class="title">{{ constants.title }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-subheader>
+    <div>
+      {{ currentDifficulty }}
+    </div>
+    <div>
+      {{ currentGamemode }}
+    </div>
+  </ion-card-subheader>
+  <ion-card-content>
+    <ion-button color="primary" expand="block" (click)="startGame()">
+      {{ constants.startGame }}
+    </ion-button>
+    <ion-button color="primary" expand="block">
+      {{ constants.difficulty }}
+    </ion-button>
+    <ion-button color="primary" expand="block">
+      {{ constants.settings }}
+    </ion-button>
+    <ion-button color="primary" expand="block">
+      {{ constants.highScore }}
+    </ion-button>
+  </ion-card-content>
+</ion-card>

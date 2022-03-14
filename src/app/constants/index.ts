@@ -1,1 +1,1 @@
-export * from './difficulties.constant';
+export * from './difficulties.constants';

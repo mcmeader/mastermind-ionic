@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject} from 'rxjs';
+import {take,tap} from 'rxjs/operators';
+import { CHALLENGE } from 'src/app/constants';
+import { DIFFICULTY_PEG_COLORS } from 'src/app/constants/difficulty-peg-colors.constant';
 import { Difficulties, GuessPegColor } from 'src/app/enums';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
-  private solution;
-  private gameDifficulty;
+  public gameDifficulty$ = new BehaviorSubject(Difficulties.normal);
+
+  private solution: Array<any>;
 
   public getDifficulties(){
     return [Difficulties.easy, Difficulties.normal, Difficulties.hard, Difficulties.nightmare, Difficulties.impossible];
@@ -33,7 +38,7 @@ export class GameService {
     checkedGuess.forEach((data, index) => {
         if (data !== '-') {
             const indexWhiteGuess = whiteGuess.indexOf(data);
-            if (indexWhiteGuess != -1) {
+            if (indexWhiteGuess !== -1) {
                 checkedPegs[index] = GuessPegColor.white;
                 whiteGuess[indexWhiteGuess] = '-';
             }
@@ -49,7 +54,15 @@ export class GameService {
 }
 
   public generateSolution() {
-    const pegs = new Array(this.gameDifficulty.numberOfPegs).fill('');
-    this.solution = pegs.map(() => this.gameDifficulty.colors[Math.floor(Math.random() * this.gameDifficulty.colors.length)]);
-  }
+    this.gameDifficulty$.pipe(take(1),tap((difficulty)=>{
+        const challenge = CHALLENGE[difficulty];
+        const difficultyColors = DIFFICULTY_PEG_COLORS[difficulty];
+        const solutionPegs= new Array(challenge.numberOfPegs).fill('');
+        //TODO: Replace with random.org mapping
+        return solutionPegs.map(() => difficultyColors[Math.floor(Math.random() * challenge.numberOfPegs)]);
+    })).subscribe((result) => {
+        //TODO: Fixup typing here with peg enums
+        this.solution = result as any;
+    });
+}
 }
