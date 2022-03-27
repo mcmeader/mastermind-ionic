@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { FinishScreenComponent } from './finish-screen.component';
+import { PegContainerComponent } from './peg-container.component';
 
-describe('FinishScreenComponent', () => {
-  let component: FinishScreenComponent;
-  let fixture: ComponentFixture<FinishScreenComponent>;
+describe('PegContainerComponent', () => {
+  let component: PegContainerComponent;
+  let fixture: ComponentFixture<PegContainerComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [FinishScreenComponent],
+        declarations: [PegContainerComponent],
         imports: [IonicModule.forRoot()],
       }).compileComponents();
 
-      fixture = TestBed.createComponent(FinishScreenComponent);
+      fixture = TestBed.createComponent(PegContainerComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     })

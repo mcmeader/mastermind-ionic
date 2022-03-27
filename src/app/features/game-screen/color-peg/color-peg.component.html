@@ -1,3 +1,6 @@
-<p>
-  color-peg works!
-</p>
+<div
+  class="color-peg"
+  [ngStyle]="{ color: pegColor }"
+  [disabled]="static"
+  (click)="clickPeg()"
+></div>

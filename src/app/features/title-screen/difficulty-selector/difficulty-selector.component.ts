@@ -6,11 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./difficulty-selector.component.scss'],
 })
 export class DifficultySelectorComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }
 
 // import React from 'react';

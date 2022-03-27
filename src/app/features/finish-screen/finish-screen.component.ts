@@ -6,11 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./finish-screen.component.scss'],
 })
 export class FinishScreenComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }
 
 // import { Text, View } from 'react-native'
@@ -53,6 +51,5 @@ export class FinishScreenComponent implements OnInit {
 //         alignContent: 'center'
 //     },
 // });
-
 
 // export default FinishScreen

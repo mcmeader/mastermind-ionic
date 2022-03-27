@@ -1,30 +1,42 @@
-import { Difficulties, EasyDifficultyPegColor, NormalDifficultyPegColor,
-    HardDifficultyPegColor, NightmareDifficultyPegColor, ImpossibleDifficultyPegColor } from '../enums';
+import { Difficulties, PegColors } from '../enums';
+import {
+  EASYPEGCOLORS,
+  NORMALPEGCOLORS,
+  HARDPEGCOLORS,
+  NIGHTMAREPEGCOLORS,
+  IMPOSSIBLEPEGCOLORS,
+} from './difficulty-colors.constants';
 
-export const CHALLENGE = {
-   [Difficulties.easy]:{
-        numberOfPegs: 3,
-        colors: EasyDifficultyPegColor,
-        maxGuesses: 0,
-    },
-    [ Difficulties.normal]: {
-        numberOfPegs: 4,
-        colors: NormalDifficultyPegColor,
-        maxGuesses: 10,
-    },
-    [ Difficulties.hard]:{
-        numberOfPegs: 5,
-        colors: HardDifficultyPegColor,
-        maxGuesses: 12,
-    },
-    [Difficulties.nightmare]:{
-        numberOfPegs: 6,
-        colors: NightmareDifficultyPegColor,
-        maxGuesses: 10,
-    },
-    [ Difficulties.impossible]:{
-        numberOfPegs: 8,
-        colors: ImpossibleDifficultyPegColor,
-        maxGuesses: 8,
-    }
+export type ChallengeInfo = {
+  numberOfPegs: number;
+  colors: Record<string, PegColors>;
+  maxGuesses: number;
+};
+
+export const CHALLENGE: Record<Difficulties, ChallengeInfo> = {
+  [Difficulties.easy]: {
+    numberOfPegs: 3,
+    colors: EASYPEGCOLORS,
+    maxGuesses: 0,
+  },
+  [Difficulties.normal]: {
+    numberOfPegs: 4,
+    colors: NORMALPEGCOLORS,
+    maxGuesses: 10,
+  },
+  [Difficulties.hard]: {
+    numberOfPegs: 5,
+    colors: HARDPEGCOLORS,
+    maxGuesses: 12,
+  },
+  [Difficulties.nightmare]: {
+    numberOfPegs: 6,
+    colors: NIGHTMAREPEGCOLORS,
+    maxGuesses: 10,
+  },
+  [Difficulties.impossible]: {
+    numberOfPegs: 8,
+    colors: IMPOSSIBLEPEGCOLORS,
+    maxGuesses: 8,
+  },
 };

@@ -1,3 +1,51 @@
-<p>
-  game-screen works!
-</p>
+<ion-grid class="container">
+  <ion-row class="top-container">
+    <ion-col>
+      <ion-button (click)="goBack()">Back</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <app-peg-container
+          [pegs]="solution"
+          [disabled]="true"
+        ></app-peg-container>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row class="middle-container">
+    <ion-col>
+      <ion-list>
+        <ion-item *ngFor="let row of rows; let i = index">
+          <div class="round-number">{{ i }}</div>
+          <app-peg-container [pegs]="row" [disabled]="true"></app-peg-container>
+          <app-peg-container [pegs]="row" [disabled]="true"></app-peg-container>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row class="lower-container">
+    <ion-col>
+      <ion-button>Submit</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <app-peg-container
+          [pegs]="choices"
+          [disabled]="false"
+        ></app-peg-container>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-popover [isOpen]="showWinMessage">
+  <ng-template>
+    <app-popover-content></app-popover-content>
+  </ng-template>
+</ion-popover>
+
+<ion-popover [isOpen]="showLoseMessage">
+  <ng-template>
+    <app-popover-content></app-popover-content>
+  </ng-template>
+</ion-popover>

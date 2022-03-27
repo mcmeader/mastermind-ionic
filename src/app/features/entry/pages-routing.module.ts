@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {  RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { FinishScreenComponent } from '../finish-screen/finish-screen.component';
 import { GameScreenComponent } from '../game-screen/page/game-screen.component';
 import { TitleScreenComponent } from '../title-screen/page/title-screen.component';
@@ -8,21 +8,20 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'title-screen',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'title-screen',
-    component:TitleScreenComponent
+    component: TitleScreenComponent,
   },
   {
     path: 'game-screen',
-    component:GameScreenComponent
+    component: GameScreenComponent,
   },
   {
     path: 'finish-screen',
-    component:FinishScreenComponent
+    component: FinishScreenComponent,
   },
-
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

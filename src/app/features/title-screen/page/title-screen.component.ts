@@ -1,7 +1,7 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TITLE_SCREEN_CONSTANTS } from './constants.constants';
-import { GameService} from '../../../services/game/game.service';
+import { GameService } from '../../../services/game/game.service';
 
 @Component({
   selector: 'app-title-screen',
@@ -9,13 +9,13 @@ import { GameService} from '../../../services/game/game.service';
   styleUrls: ['./title-screen.component.scss'],
 })
 export class TitleScreenComponent {
+  public readonly constants = TITLE_SCREEN_CONSTANTS;
+  public readonly gameDifficulty$ =
+    this.gameService.gameDifficulty$.asObservable();
 
-  public readonly constants= TITLE_SCREEN_CONSTANTS;
-  public readonly gameDifficulty$ = this.gameService.gameDifficulty$.asObservable();
+  constructor(private route: Router, private gameService: GameService) {}
 
-  constructor(private route: Router, private gameService: GameService) { }
-
-  public startGame(){
+  public startGame() {
     this.gameService.generateSolution();
     this.route.navigate(['game-screen']);
   }

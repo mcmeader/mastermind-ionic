@@ -2,14 +2,14 @@
   <ion-card-header>
     <ion-card-title class="title">{{ constants.title }}</ion-card-title>
   </ion-card-header>
-  <ion-card-subheader>
+  <ion-card-subtitle>
     <div>
       {{ currentDifficulty }}
     </div>
     <div>
       {{ currentGamemode }}
     </div>
-  </ion-card-subheader>
+  </ion-card-subtitle>
   <ion-card-content>
     <ion-button color="primary" expand="block" (click)="startGame()">
       {{ constants.startGame }}

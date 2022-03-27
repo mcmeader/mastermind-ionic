@@ -1,5 +1,5 @@
 export enum GuessPegColor {
-black,
-white,
-empty
+  black,
+  white,
+  empty,
 }

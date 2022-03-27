@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { FinishScreenComponent } from './finish-screen.component';
+import { GameRoundRowComponent } from './game-round-row.component';
 
-describe('FinishScreenComponent', () => {
-  let component: FinishScreenComponent;
-  let fixture: ComponentFixture<FinishScreenComponent>;
+describe('GameRoundRowComponent', () => {
+  let component: GameRoundRowComponent;
+  let fixture: ComponentFixture<GameRoundRowComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [FinishScreenComponent],
+        declarations: [GameRoundRowComponent],
         imports: [IonicModule.forRoot()],
       }).compileComponents();
 
-      fixture = TestBed.createComponent(FinishScreenComponent);
+      fixture = TestBed.createComponent(GameRoundRowComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
     })
