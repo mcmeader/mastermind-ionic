@@ -5,34 +5,28 @@
     </ion-col>
     <ion-col>
       <ion-item>
-        <app-peg-container
-          [pegs]="solution"
-          [disabled]="true"
-        ></app-peg-container>
+        <app-peg-container [pegs]="solution" [disabled]="true"></app-peg-container>
       </ion-item>
     </ion-col>
   </ion-row>
   <ion-row class="middle-container">
     <ion-col>
       <ion-list>
-        <ion-item *ngFor="let row of rows; let i = index">
-          <div class="round-number">{{ i }}</div>
-          <app-peg-container [pegs]="row" [disabled]="true"></app-peg-container>
-          <app-peg-container [pegs]="row" [disabled]="true"></app-peg-container>
+        <ion-item *ngFor="let row of roundData; let i = index">
+          <div class="round-number">{{ row.round}}</div>
+          <app-peg-container [pegs]="row.answers" [disabled]="true" [answerContainer]="true"></app-peg-container>
+          <app-peg-container [pegs]="row.guesses" [disabled]="true"></app-peg-container>
         </ion-item>
       </ion-list>
     </ion-col>
   </ion-row>
   <ion-row class="lower-container">
     <ion-col>
-      <ion-button>Submit</ion-button>
+      <ion-button (click)="submitGuess()">Submit</ion-button>
     </ion-col>
     <ion-col>
       <ion-item>
-        <app-peg-container
-          [pegs]="choices"
-          [disabled]="false"
-        ></app-peg-container>
+        <app-peg-container [pegs]="choices" [disabled]="false" (pegColor)="selectColor($event)"></app-peg-container>
       </ion-item>
     </ion-col>
   </ion-row>

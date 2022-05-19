@@ -1,5 +1,6 @@
 export enum PegColors {
   empty,
+  checked,
   red,
   yellow,
   blue,

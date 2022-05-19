@@ -1,4 +1,4 @@
-export enum GuessPegColor {
+export enum AnswerPegColor {
   black,
   white,
   empty,

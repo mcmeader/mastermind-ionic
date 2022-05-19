@@ -1,6 +1,5 @@
 <div
   class="color-peg"
-  [ngStyle]="{ color: pegColor }"
-  [disabled]="static"
+  [ngStyle]="{ 'background-color': pegColor, 'border-color':borderColor }"
   (click)="clickPeg()"
 ></div>

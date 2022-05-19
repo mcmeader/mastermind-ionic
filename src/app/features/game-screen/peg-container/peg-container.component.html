@@ -4,7 +4,7 @@
       <app-color-peg
         [pegNumber]="i"
         [static]="disabled"
-        [pegColor]="peg.color"
+        [pegColor]="pegColors[peg]"
         (clicked)="clicked($event)"
       ></app-color-peg>
     </ion-col>

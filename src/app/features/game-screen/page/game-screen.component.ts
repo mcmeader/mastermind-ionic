@@ -3,12 +3,12 @@ import { Route, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CHALLENGE, ChallengeInfo } from 'src/app/constants';
-import { Difficulties, GuessPegColor, PegColors } from 'src/app/enums';
+import { Difficulties, AnswerPegColor, PegColors } from 'src/app/enums';
 import { GameService } from 'src/app/services/game/game.service';
 
 type RoundData = {
   round: number;
-  answers: GuessPegColor[];
+  answers: AnswerPegColor[];
   guesses: PegColors[];
 };
 
@@ -20,14 +20,17 @@ type RoundData = {
 export class GameScreenComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject();
   private difficulty: ChallengeInfo;
-  private solutionHidden = true;
+  private solutionHidden = false;
   private currentIndex = 0;
   private currentRound = 0;
   private selectedIndex: number;
   private selectedPegs: PegColors[];
-  private roundData: RoundData[];
   private showWinMessage: boolean;
   private showLoseMessage: boolean;
+
+  public solution: PegColors[];
+  public choices: PegColors[];
+  public roundData: RoundData[];
 
   // "Congratulations!",
   //             `You solved the puzzle in ${currentRound + 1} rounds!`,
@@ -49,7 +52,7 @@ export class GameScreenComponent implements OnInit, OnDestroy {
   //                 }
   //             ],
 
-  constructor(private gameService: GameService, private router: Router) {}
+  constructor(private gameService: GameService, private router: Router) { }
 
   ngOnInit() {
     this.gameService.gameDifficulty$
@@ -58,49 +61,49 @@ export class GameScreenComponent implements OnInit, OnDestroy {
         this.difficulty = CHALLENGE[difficulty];
 
         this.selectedPegs = new Array(this.difficulty.numberOfPegs).fill(
-          GuessPegColor.empty
+          PegColors.empty
         );
+
         this.roundData = [
           {
             round: 1,
             answers: new Array(this.difficulty.numberOfPegs).fill(
-              GuessPegColor.empty
+              AnswerPegColor.empty
             ),
             guesses: new Array(this.difficulty.numberOfPegs).fill(
-              GuessPegColor.empty
+              PegColors.empty
             ),
           },
         ];
+
+        this.choices = this.difficulty.colors;
       });
+
+    this.solution = this.gameService.solution;
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
+    this.destroy$.next(null);
     this.destroy$.complete();
   }
 
-  public selectColor(color, index) {
-    if (this.selectedIndex === index) {
-      this.selectedIndex = null;
-      if (this.currentIndex < this.difficulty.numberOfPegs) {
-        const newPegs = [...this.selectedPegs];
-        newPegs[this.currentIndex] = color;
-        this.selectedPegs = newPegs;
-        const oldRoundData = [...this.roundData];
-        oldRoundData.pop();
-        const newRoundData = this.roundData[this.currentRound];
-        newRoundData.guesses = newPegs;
-        this.roundData = [...oldRoundData, newRoundData];
-        this.currentIndex = this.currentIndex + 1;
-      }
-    } else {
-      this.selectedIndex = index;
+  public selectColor(color) {
+    if (this.currentIndex < this.difficulty.numberOfPegs) {
+      const newPegs = [...this.selectedPegs];
+      newPegs[this.currentIndex] = color;
+      this.selectedPegs = newPegs;
+      const oldRoundData = [...this.roundData];
+      oldRoundData.pop();
+      const newRoundData = this.roundData[this.currentRound];
+      newRoundData.guesses = newPegs;
+      this.roundData = [...oldRoundData, newRoundData];
+      this.currentIndex = this.currentIndex + 1;
     }
   }
 
   public resetGuess() {
     this.selectedPegs = new Array(this.difficulty.numberOfPegs).fill(
-      GuessPegColor.empty
+      AnswerPegColor.empty
     );
     this.currentIndex = 0;
     this.selectedIndex = null;
@@ -108,48 +111,51 @@ export class GameScreenComponent implements OnInit, OnDestroy {
     oldRoundData.pop();
     const newRoundData = this.roundData[this.currentRound];
     newRoundData.guesses = new Array(this.difficulty.numberOfPegs).fill(
-      GuessPegColor.empty
+      AnswerPegColor.empty
     );
     this.roundData = [...oldRoundData, newRoundData];
   }
 
   public submitGuess() {
-    const checkedGuess = this.gameService.checkGuess(this.selectedPegs);
-    if (
-      checkedGuess.indexOf(GuessPegColor.white) === -1 &&
-      checkedGuess.indexOf(GuessPegColor.empty) === -1
-    ) {
-      this.solutionHidden = false;
-      const currentRoundData = this.roundData[this.currentRound];
-      currentRoundData.answers = checkedGuess;
-      //Create Win Alert
-    } else {
-      if (this.difficulty.maxGuesses === this.currentRound + 1) {
+    if (!this.selectedPegs.includes(PegColors.empty)) {
+      const checkedGuess = this.gameService.checkGuess(this.selectedPegs);
+      if (
+        checkedGuess.indexOf(AnswerPegColor.white) === -1 &&
+        checkedGuess.indexOf(AnswerPegColor.empty) === -1
+      ) {
         this.solutionHidden = false;
         const currentRoundData = this.roundData[this.currentRound];
         currentRoundData.answers = checkedGuess;
-        //Create Lose Alert
+        //Create Win Alert
       } else {
-        const currentRoundData = this.roundData[this.currentRound];
-        currentRoundData.answers = checkedGuess;
-        this.roundData = [
-          ...this.roundData,
-          {
-            round: this.currentRound + 2,
-            answers: new Array(this.difficulty.numberOfPegs).fill(
-              GuessPegColor.empty
-            ),
-            guesses: new Array(this.difficulty.numberOfPegs).fill(
-              GuessPegColor.empty
-            ),
-          },
-        ];
-        this.currentRound = this.currentRound + 1;
-        this.selectedPegs = new Array(this.difficulty.numberOfPegs).fill(
-          GuessPegColor.empty
-        );
-        this.currentIndex = 0;
-        this.selectedIndex = null;
+        if (this.difficulty.maxGuesses === this.currentRound + 1) {
+          this.solutionHidden = false;
+          const currentRoundData = this.roundData[this.currentRound];
+          currentRoundData.answers = checkedGuess;
+          //Create Lose Alert
+        } else {
+          console.log('d')
+          const currentRoundData = this.roundData[this.currentRound];
+          currentRoundData.answers = checkedGuess;
+          this.roundData = [
+            ...this.roundData,
+            {
+              round: this.currentRound + 1,
+              answers: new Array(this.difficulty.numberOfPegs).fill(
+                PegColors.empty
+              ),
+              guesses: new Array(this.difficulty.numberOfPegs).fill(
+                AnswerPegColor.empty
+              ),
+            },
+          ];
+          this.currentRound = this.currentRound + 1;
+          this.selectedPegs = new Array(this.difficulty.numberOfPegs).fill(
+            AnswerPegColor.empty
+          );
+          this.currentIndex = 0;
+          this.selectedIndex = null;
+        }
       }
     }
   }

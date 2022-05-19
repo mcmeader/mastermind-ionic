@@ -27,8 +27,8 @@ describe('GameService', () => {
   it('Returns null on a winning guess', () => {
     let guess = Array.of(gameDifficulty.colors[1]);
     let results = checkGuess(guess, guess);
-    expect(results.indexOf(GuessPegColor.WHITE)).toBe(-1);
-    expect(results.indexOf(GuessPegColor.EMPTY)).toBe(-1);
+    expect(results.indexOf(AnswerPegColor.WHITE)).toBe(-1);
+    expect(results.indexOf(AnswerPegColor.EMPTY)).toBe(-1);
   });
 
   it('Returns correct order for 2 correct guess and no other correct colors', () => {
@@ -45,9 +45,9 @@ describe('GameService', () => {
     let checkedGuess = checkGuess(guess, solution);
     expect(checkedGuess.length).toBe(gameDifficulty.numberOfPegs);
     expect(
-      checkedGuess.some((value) => value === GuessPegColor.WHITE)
+      checkedGuess.some((value) => value === AnswerPegColor.WHITE)
     ).toBeFalsy();
-    expect(checkedGuess[0]).toBe(GuessPegColor.BLACK);
+    expect(checkedGuess[0]).toBe(AnswerPegColor.BLACK);
   });
 
   it('Returns correct order for 1 correct color but no correct positions', () => {
@@ -64,9 +64,9 @@ describe('GameService', () => {
     let checkedGuess = checkGuess(guess, solution);
     expect(checkedGuess.length).toBe(gameDifficulty.numberOfPegs);
     expect(
-      checkedGuess.some((value) => value === GuessPegColor.BLACK)
+      checkedGuess.some((value) => value === AnswerPegColor.BLACK)
     ).toBeFalsy();
-    expect(checkedGuess[0]).toBe(GuessPegColor.WHITE);
+    expect(checkedGuess[0]).toBe(AnswerPegColor.WHITE);
   });
 
   it('Returns correct values when no colors match the guess', () => {
@@ -83,10 +83,10 @@ describe('GameService', () => {
     let checkedGuess = checkGuess(guess, solution);
     expect(checkedGuess.length).toBe(gameDifficulty.numberOfPegs);
     expect(
-      checkedGuess.some((value) => value === GuessPegColor.BLACK)
+      checkedGuess.some((value) => value === AnswerPegColor.BLACK)
     ).toBeFalsy();
     expect(
-      checkedGuess.some((value) => value === GuessPegColor.WHITE)
+      checkedGuess.some((value) => value === AnswerPegColor.WHITE)
     ).toBeFalsy();
   });
 });

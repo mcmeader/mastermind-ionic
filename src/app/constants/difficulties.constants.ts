@@ -9,7 +9,7 @@ import {
 
 export type ChallengeInfo = {
   numberOfPegs: number;
-  colors: Record<string, PegColors>;
+  colors: PegColors[];
   maxGuesses: number;
 };
 

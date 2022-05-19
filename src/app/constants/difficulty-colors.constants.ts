@@ -1,32 +1,33 @@
-import { PegColors } from '../enums/peg-color.enum';
+import { from } from "rxjs";
+import { PegColors } from "../enums";
 
-export const EASYPEGCOLORS = {
-  red: PegColors.red,
-  yellow: PegColors.yellow,
-  blue: PegColors.blue,
-  green: PegColors.green,
-};
+export const EASYPEGCOLORS = [
+  PegColors.red,
+  PegColors.yellow,
+  PegColors.blue,
+  PegColors.green,
+];
 
-export const NORMALPEGCOLORS = {
+export const NORMALPEGCOLORS = [
   ...EASYPEGCOLORS,
-  black: PegColors.black,
-  white: PegColors.white,
-};
+  PegColors.black,
+  PegColors.white,
+];
 
-export const HARDPEGCOLORS = {
+export const HARDPEGCOLORS = [
   ...NORMALPEGCOLORS,
-  purple: PegColors.purple,
-  orange: PegColors.orange,
-};
+  PegColors.purple,
+  PegColors.orange,
+];
 
-export const NIGHTMAREPEGCOLORS = {
+export const NIGHTMAREPEGCOLORS = [
   ...HARDPEGCOLORS,
-  grey: PegColors.darkslategrey,
-  brown: PegColors.brown,
-};
+  PegColors.darkslategrey,
+  PegColors.brown,
+];
 
-export const IMPOSSIBLEPEGCOLORS = {
+export const IMPOSSIBLEPEGCOLORS = [
   ...NIGHTMAREPEGCOLORS,
-  gold: PegColors.gold,
-  silver: PegColors.silver,
-};
+  PegColors.gold,
+  PegColors.silver,
+];
