@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { TITLE_SCREEN_CONSTANTS } from './constants.constants';
+import { TITLE_SCREEN_CONSTANTS } from './title-screen.constants';
 import { GameService } from '../../../services/game/game.service';
 
 @Component({

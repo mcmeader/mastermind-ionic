@@ -1,27 +1,90 @@
-<ion-card class="container">
-  <ion-card-header>
-    <ion-card-title class="title">{{ constants.title }}</ion-card-title>
-  </ion-card-header>
-  <ion-card-subtitle>
-    <div>
-      {{ currentDifficulty }}
-    </div>
-    <div>
-      {{ currentGamemode }}
-    </div>
-  </ion-card-subtitle>
-  <ion-card-content>
-    <ion-button color="primary" expand="block" (click)="startGame()">
-      {{ constants.startGame }}
-    </ion-button>
-    <ion-button color="primary" expand="block">
-      {{ constants.difficulty }}
-    </ion-button>
-    <ion-button color="primary" expand="block">
-      {{ constants.settings }}
-    </ion-button>
-    <ion-button color="primary" expand="block">
-      {{ constants.highScore }}
-    </ion-button>
-  </ion-card-content>
-</ion-card>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button size="large" expand="block" shape="round">X</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-row>
+  <ion-col>
+    <ion-row>Difficulty</ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <ion-button [disabled]="false" size="large" expand="block" shape="round"
+                  value="DIFFICULTIES.easy">1</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button [disabled]="true" size="large" expand="block" shape="round"
+                  value="DIFFICULTIES.normal">2</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button [disabled]="true" size="large" expand="block" shape="round"
+                  value="DIFFICULTIES.hard">3</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button [disabled]="true" size="large" expand="block" shape="round"
+                  value="DIFFICULTIES.nightmare">4</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button [disabled]="true" size="large" expand="block" shape="round"
+                  value="DIFFICULTIES.impossible">5</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <ion-row>High Scores</ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>Personal High Score</ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>Server High Score</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <ion-row>Settings</ion-row>
+    <ion-row>
+      <ion-card id="settings-button">
+        <ion-card-content>
+          <ion-toggle> Setting 1</ion-toggle></ion-card-content>
+      </ion-card>
+    </ion-row>
+    <ion-row>
+      <ion-card id="settings-button">
+        <ion-card-content>
+          <ion-toggle> Setting 2</ion-toggle></ion-card-content>
+      </ion-card>
+    </ion-row>
+    <ion-row>
+      <ion-card id="settings-button">
+        <ion-card-content>
+          <ion-toggle> K Mode</ion-toggle></ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <ion-button expand="block">New Game</ion-button>
+  </ion-col>
+</ion-row>
