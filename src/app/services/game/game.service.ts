@@ -9,9 +9,12 @@ import { Difficulties, AnswerPegColor, PegColors } from 'src/app/enums';
   providedIn: 'root',
 })
 export class GameService {
-  private gameDifficulty = new BehaviorSubject(Difficulties.normal);
+  private _gameDifficulty = new BehaviorSubject(Difficulties.normal);
   public get gameDifficulty$(): Observable<Difficulties> {
-    return this.gameDifficulty.asObservable();
+    return this._gameDifficulty.asObservable();
+  }
+  public set gameDifficulty(diff: Difficulties) {
+    this._gameDifficulty.next(diff);
   }
 
   private _solution: PegColors[];
@@ -20,7 +23,6 @@ export class GameService {
   }
 
   public gameColors = StandardColors;
-
   public answerColors = StandardAnswerColors;
 
   public getDifficulties() {

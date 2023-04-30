@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Difficulties } from 'src/app/enums';
+import { GameService } from 'src/app/services/game/game.service';
+import { CONSTANTS } from './difficulty-section.constants';
 
 @Component({
   selector: 'app-difficulty-section',
   templateUrl: './difficulty-section.component.html',
   styleUrls: ['./difficulty-section.component.scss'],
 })
-export class DifficultySectionComponent implements OnInit {
-  public readonly constants = CO;
+export class DifficultySectionComponent {
+  public readonly CONSTS = CONSTANTS;
 
-  constructor() {}
+  constructor(public gameService: GameService) {}
 
-  ngOnInit() {}
+  clickDifficulty(diff: Difficulties) {
+    this.gameService.gameDifficulty = diff;
+  }
 }

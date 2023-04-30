@@ -1,27 +1,22 @@
+<ion-row>{{ CONSTS.HEADER }}</ion-row>
 <ion-row>
-  <ion-col>
-    <ion-row>{{ constants.sections[0] }}</ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-content>
-            <ion-row>
-              <ion-col
-                *ngFor="let const of constants.difficulties; let i = index"
-              >
-                <ion-button
-                  [disabled]="false"
-                  size="large"
-                  expand="block"
-                  shape="round"
-                  value="const.difficulty"
-                  >{{ const.display }}</ion-button
-                >
-              </ion-col>
-            </ion-row>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-col>
+  <ion-card style="width: 85vw">
+    <ion-card-content>
+      <ion-row>
+        <ion-segment
+          [value]="gameService.gameDifficulty$ | async"
+          scrollable="true"
+          style="width: 85vw"
+        >
+          <ion-segment-button
+            *ngFor="let const of CONSTS.DIFFICULTIES"
+            [value]="const.difficulty"
+            (ionChange)="clickDifficulty(const.difficulty)"
+          >
+            {{ const.display }}
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-row>
