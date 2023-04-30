@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { OptionButtonComponent } from './option-button.component';
+import { SettingsSectionComponent } from './settings-section.component';
 
-describe('OptionButtonComponent', () => {
-  let component: OptionButtonComponent;
-  let fixture: ComponentFixture<OptionButtonComponent>;
+describe('SettingsSectionComponent', () => {
+  let component: SettingsSectionComponent;
+  let fixture: ComponentFixture<SettingsSectionComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [OptionButtonComponent],
+      declarations: [SettingsSectionComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(OptionButtonComponent);
+    fixture = TestBed.createComponent(SettingsSectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

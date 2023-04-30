@@ -1,40 +1,19 @@
 <ion-header>
   <ion-toolbar>
+    <ion-icon src="assets/mastermind-logo.svg" slot="start"></ion-icon>
     <ion-buttons slot="end">
       <ion-button size="large" expand="block" shape="round">X</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-row>
   <ion-col>
-    <ion-row>Difficulty</ion-row>
+    <ion-row>{{ constants.sections[1] }}</ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col *ngFor="let value of constants.highScore">
         <ion-card>
-          <ion-card-content>
-            <ion-row>
-              <ion-col>
-                <ion-button [disabled]="false" size="large" expand="block" shape="round"
-                  value="DIFFICULTIES.easy">1</ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button [disabled]="true" size="large" expand="block" shape="round"
-                  value="DIFFICULTIES.normal">2</ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button [disabled]="true" size="large" expand="block" shape="round"
-                  value="DIFFICULTIES.hard">3</ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button [disabled]="true" size="large" expand="block" shape="round"
-                  value="DIFFICULTIES.nightmare">4</ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button [disabled]="true" size="large" expand="block" shape="round"
-                  value="DIFFICULTIES.impossible">5</ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-card-content>
+          <ion-card-content>{{ value }}</ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
@@ -43,41 +22,12 @@
 
 <ion-row>
   <ion-col>
-    <ion-row>High Scores</ion-row>
+    <ion-row>{{ constants.sections[2] }}</ion-row>
     <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-content>Personal High Score</ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card>
-          <ion-card-content>Server High Score</ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-col>
-</ion-row>
-
-<ion-row>
-  <ion-col>
-    <ion-row>Settings</ion-row>
-    <ion-row>
-      <ion-card id="settings-button">
+      <ion-card id="settings-button" *ngFor="let setting of constants.settings">
         <ion-card-content>
-          <ion-toggle> Setting 1</ion-toggle></ion-card-content>
-      </ion-card>
-    </ion-row>
-    <ion-row>
-      <ion-card id="settings-button">
-        <ion-card-content>
-          <ion-toggle> Setting 2</ion-toggle></ion-card-content>
-      </ion-card>
-    </ion-row>
-    <ion-row>
-      <ion-card id="settings-button">
-        <ion-card-content>
-          <ion-toggle> K Mode</ion-toggle></ion-card-content>
+          <ion-toggle>{{ setting }}</ion-toggle></ion-card-content
+        >
       </ion-card>
     </ion-row>
   </ion-col>

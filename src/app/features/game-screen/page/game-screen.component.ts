@@ -52,7 +52,7 @@ export class GameScreenComponent implements OnInit, OnDestroy {
   //                 }
   //             ],
 
-  constructor(private gameService: GameService, private router: Router) { }
+  constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit() {
     this.gameService.gameDifficulty$
@@ -134,7 +134,7 @@ export class GameScreenComponent implements OnInit, OnDestroy {
           currentRoundData.answers = checkedGuess;
           //Create Lose Alert
         } else {
-          console.log('d')
+          console.log('d');
           const currentRoundData = this.roundData[this.currentRound];
           currentRoundData.answers = checkedGuess;
           this.roundData = [

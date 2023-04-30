@@ -1,10 +1,10 @@
 import { Difficulties, PegColors } from '../enums';
 import {
   EASYPEGCOLORS,
-  NORMALPEGCOLORS,
   HARDPEGCOLORS,
-  NIGHTMAREPEGCOLORS,
   IMPOSSIBLEPEGCOLORS,
+  NIGHTMAREPEGCOLORS,
+  NORMALPEGCOLORS,
 } from './difficulty-colors.constants';
 
 export type ChallengeInfo = {

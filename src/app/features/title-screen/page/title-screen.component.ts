@@ -10,8 +10,7 @@ import { GameService } from '../../../services/game/game.service';
 })
 export class TitleScreenComponent {
   public readonly constants = TITLE_SCREEN_CONSTANTS;
-  public readonly gameDifficulty$ =
-    this.gameService.gameDifficulty$;
+  public readonly gameDifficulty$ = this.gameService.gameDifficulty$;
 
   constructor(private route: Router, private gameService: GameService) {}
 

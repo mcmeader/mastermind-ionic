@@ -1,0 +1,27 @@
+<ion-row>
+  <ion-col>
+    <ion-row>{{ constants.sections[0] }}</ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <ion-row>
+              <ion-col
+                *ngFor="let const of constants.difficulties; let i = index"
+              >
+                <ion-button
+                  [disabled]="false"
+                  size="large"
+                  expand="block"
+                  shape="round"
+                  value="const.difficulty"
+                  >{{ const.display }}</ion-button
+                >
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>

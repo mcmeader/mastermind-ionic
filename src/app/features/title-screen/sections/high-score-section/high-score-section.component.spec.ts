@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { OptionButtonComponent } from './option-button.component';
+import { HighScoreSectionComponent } from './high-score-section.component';
 
-describe('OptionButtonComponent', () => {
-  let component: OptionButtonComponent;
-  let fixture: ComponentFixture<OptionButtonComponent>;
+describe('HighScoreSectionComponent', () => {
+  let component: HighScoreSectionComponent;
+  let fixture: ComponentFixture<HighScoreSectionComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [OptionButtonComponent],
+      declarations: [HighScoreSectionComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(OptionButtonComponent);
+    fixture = TestBed.createComponent(HighScoreSectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

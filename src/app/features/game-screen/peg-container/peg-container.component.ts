@@ -16,14 +16,22 @@ export class PegContainerComponent implements OnInit {
 
   public pegColors: AnswerColors | GameColors;
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    this.pegColors = this.answerContainer ? this.gameService.answerColors : this.gameService.gameColors;
+    this.pegColors = this.answerContainer
+      ? this.gameService.answerColors
+      : this.gameService.gameColors;
   }
 
-  public clicked(event: number) { 
-    console.log('s',event,this.pegs,this.pegs[event],this.pegColors[this.pegs[event]])
-    this.pegColor.emit(this.pegs[event])
+  public clicked(event: number) {
+    console.log(
+      's',
+      event,
+      this.pegs,
+      this.pegs[event],
+      this.pegColors[this.pegs[event]]
+    );
+    this.pegColor.emit(this.pegs[event]);
   }
 }

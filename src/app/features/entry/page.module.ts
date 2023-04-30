@@ -6,15 +6,14 @@ import { ColorPegComponent } from '../game-screen/color-peg/color-peg.component'
 import { GameRoundRowComponent } from '../game-screen/game-round-row/game-round-row.component';
 import { GameScreenComponent } from '../game-screen/page/game-screen.component';
 import { PegContainerComponent } from '../game-screen/peg-container/peg-container.component';
-import { TitleScreenComponent } from '../title-screen/page/title-screen.component';
 import { PagesRoutingModule } from './pages-routing.module';
+import { TitleScreenModule } from '../title-screen/title-screen.module';
 
 @NgModule({
-  imports: [IonicModule, CommonModule, PagesRoutingModule],
+  imports: [IonicModule, CommonModule, PagesRoutingModule, TitleScreenModule],
   declarations: [
     FinishScreenComponent,
     GameScreenComponent,
-    TitleScreenComponent,
     ColorPegComponent,
     GameRoundRowComponent,
     PegContainerComponent,

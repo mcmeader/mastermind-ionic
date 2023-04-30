@@ -1,5 +1,4 @@
-import { from } from "rxjs";
-import { PegColors } from "../enums";
+import { PegColors } from '../enums';
 
 export const EASYPEGCOLORS = [
   PegColors.red,

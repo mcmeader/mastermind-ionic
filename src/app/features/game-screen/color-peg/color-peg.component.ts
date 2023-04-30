@@ -14,15 +14,14 @@ export class ColorPegComponent implements OnInit {
   public borderColor: string;
   public activated: boolean;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   public clickPeg() {
     if (!this.static) {
       this.borderColor = this.activated ? 'black' : 'gold';
-      if (this.activated){
+      if (this.activated) {
         this.clicked.emit(this.pegNumber);
       }
-      this.activated = !this.activated
+      this.activated = !this.activated;
     }
   }
 }

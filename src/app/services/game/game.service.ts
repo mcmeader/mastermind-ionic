@@ -15,7 +15,7 @@ export class GameService {
   }
 
   private _solution: PegColors[];
-  public get solution(){
+  public get solution() {
     return this._solution;
   }
 
@@ -33,12 +33,12 @@ export class GameService {
     ];
   }
 
-  public checkGuess(guess:PegColors[]) {
+  public checkGuess(guess: PegColors[]) {
     const checkedPegs = new Array(guess.length).fill(AnswerPegColor.empty);
     const checkedGuess = [...guess];
 
     guess.forEach((data, index) => {
-      console.log('s',data,index,this.solution)
+      console.log('s', data, index, this.solution);
       if (data === this.solution[index]) {
         checkedGuess[index] = PegColors.checked;
         checkedPegs[index] = AnswerPegColor.black;
@@ -87,7 +87,7 @@ export class GameService {
           return solutionPegs.map(
             () =>
               difficultyColors[
-              Math.floor(Math.random() * challenge.numberOfPegs)
+                Math.floor(Math.random() * challenge.numberOfPegs)
               ]
           );
         })
