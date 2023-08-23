@@ -9,10 +9,10 @@ import { GameService } from 'src/app/services/game/game.service';
   styleUrls: ['./peg-container.component.scss'],
 })
 export class PegContainerComponent implements OnInit {
-  @Input() pegs: Array<PegColors>;
+  @Input() pegs: Array<PegColors> | Array<AnswerColors>;
   @Input() disabled: boolean;
   @Input() answerContainer: boolean;
-  @Output() pegColor = new EventEmitter<PegColors>();
+  @Output() pegColor = new EventEmitter<PegColors | AnswerColors>();
 
   public pegColors: AnswerColors | GameColors;
 
@@ -25,13 +25,6 @@ export class PegContainerComponent implements OnInit {
   }
 
   public clicked(event: number) {
-    console.log(
-      's',
-      event,
-      this.pegs,
-      this.pegs[event],
-      this.pegColors[this.pegs[event]]
-    );
     this.pegColor.emit(this.pegs[event]);
   }
 }

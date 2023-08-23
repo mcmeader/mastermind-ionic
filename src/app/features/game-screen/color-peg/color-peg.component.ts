@@ -5,7 +5,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './color-peg.component.html',
   styleUrls: ['./color-peg.component.scss'],
 })
-export class ColorPegComponent implements OnInit {
+export class ColorPegComponent {
   @Input() pegNumber: number;
   @Input() static: boolean;
   @Input() pegColor: string;
@@ -14,7 +14,6 @@ export class ColorPegComponent implements OnInit {
   public borderColor: string;
   public activated: boolean;
 
-  ngOnInit(): void {}
   public clickPeg() {
     if (!this.static) {
       this.borderColor = this.activated ? 'black' : 'gold';

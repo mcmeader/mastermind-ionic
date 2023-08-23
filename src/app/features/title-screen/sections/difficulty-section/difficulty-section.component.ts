@@ -13,7 +13,7 @@ export class DifficultySectionComponent {
 
   constructor(public gameService: GameService) {}
 
-  clickDifficulty(diff: Difficulties) {
-    this.gameService.gameDifficulty = diff;
+  clickDifficulty(diff: any) {
+    this.gameService.gameDifficulty = diff.detail.value;
   }
 }

@@ -7,11 +7,11 @@
           [value]="gameService.gameDifficulty$ | async"
           scrollable="true"
           style="width: 85vw"
+          (ionChange)="clickDifficulty($event)"
         >
           <ion-segment-button
             *ngFor="let const of CONSTS.DIFFICULTIES"
             [value]="const.difficulty"
-            (ionChange)="clickDifficulty(const.difficulty)"
           >
             {{ const.display }}
           </ion-segment-button>

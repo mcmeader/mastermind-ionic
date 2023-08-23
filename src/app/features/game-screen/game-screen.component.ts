@@ -87,20 +87,6 @@ export class GameScreenComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  public selectColor(color) {
-    if (this.currentIndex < this.difficulty.numberOfPegs) {
-      const newPegs = [...this.selectedPegs];
-      newPegs[this.currentIndex] = color;
-      this.selectedPegs = newPegs;
-      const oldRoundData = [...this.roundData];
-      oldRoundData.pop();
-      const newRoundData = this.roundData[this.currentRound];
-      newRoundData.guesses = newPegs;
-      this.roundData = [...oldRoundData, newRoundData];
-      this.currentIndex = this.currentIndex + 1;
-    }
-  }
-
   public resetGuess() {
     this.selectedPegs = new Array(this.difficulty.numberOfPegs).fill(
       AnswerPegColor.empty
@@ -158,9 +144,5 @@ export class GameScreenComponent implements OnInit, OnDestroy {
         }
       }
     }
-  }
-
-  public goBack() {
-    this.router.navigate(['title-screen']);
   }
 }

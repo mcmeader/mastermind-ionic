@@ -80,6 +80,7 @@ export class GameService {
       .pipe(
         take(1),
         map((difficulty: Difficulties) => {
+          console.log('d', difficulty);
           const challenge = CHALLENGE[difficulty];
           const difficultyColors = challenge.colors;
           const solutionPegs: PegColors[] = new Array(
